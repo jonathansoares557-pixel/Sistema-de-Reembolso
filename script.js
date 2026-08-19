@@ -33,6 +33,11 @@ amountInput.addEventListener("input", () => {
 
   value = (Number(value) / 100).toFixed(2) + "";
   amountInput.value = value.replace(".", ",").replace(/(\d)(?=(\d{3})+\,)/g, "$1.");
+
+  // mantém o cursor sempre no final, evitando embaralhar os dígitos ao
+  // digitar depois de clicar no meio de um valor já preenchido
+  const end = amountInput.value.length;
+  amountInput.setSelectionRange(end, end);
 });
 
 // limpa o erro ao editar qualquer campo
